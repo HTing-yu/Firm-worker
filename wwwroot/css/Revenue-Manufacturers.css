@@ -59,28 +59,30 @@ canvas {
 }
 
 /*列表表格流水編*/
-.RevenuepageTableNumber {
+/*.RevenuepageTableNumber {
     width: 20%;
     word-break: keep-all;
     white-space: nowrap;
-}
+}*/
 
 .RevenuepageTableTitle {
     font-size:1.3rem;
     width:100%;
 }
+
 /*列表表格資料*/
-.RevenuepageTableData {
+/*.RevenuepageTableData {
+    font-size:1.2rem;
     width: 100%;
     word-break: keep-all;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
+}*/
 
 /* 表格用樣式 */
-.SearchList{
-  min-height: 910px;
+.SearchList {
+    min-height: 910px;
 }
 
 .tab-pane {
@@ -96,7 +98,7 @@ table {
 
 td,
 th {
-    border: 1px solid #cdcdcd;
+    border: 50px solid #cdcdcd;
     padding: 8px;
 }
 

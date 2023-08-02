@@ -75,7 +75,7 @@ window.onload =function () {
         await groupbysomething(JsonData, Xaxis, Yaxis);
         ReportChart = drewChart();
 
-        await XListOrders(JsonData, Xaxis);
+        /*await XListOrders(JsonData, Xaxis);*/
     })
     //#endregion 
 
@@ -92,7 +92,7 @@ window.onload =function () {
         await groupbysomething(JsonData, Xaxis, Yaxis);
         ReportChart = drewChart();
 
-        await YListOrders(JsonData, Yaxis)
+        /*await YListOrders(JsonData, Yaxis)*/
     })
     //#endregion
 
@@ -160,22 +160,22 @@ window.onload =function () {
             success: function (item) {
 
                 //全部列表
-                $.each(item, function (Index, Data) {
-                    $("#home tbody").append(
-                        `
-                            <tr>
-                                <th scope="row">${Index + 1}</th>
-                                <td class="RevenuepageTableData">${Data.orderDate}</td>
-                                <td class="RevenuepageTableData">${Data.name}</td>
-                                <td class="RevenuepageTableData">${Data.id}</td>
-                                <td class="RevenuepageTableData">${Data.shipState}</td>
-                                <td class="RevenuepageTableData">${Data.price}</td>
-                                <td class="RevenuepageTableData">${Data.quentity}</td>
-                                <td class="RevenuepageTableData">${Data.total}</td>
-                            </tr>
-                        `
-                    )
-                })
+                //$.each(item, function (Index, Data) {
+                //    $("#home tbody").append(
+                //        `
+                //            <tr>
+                //                <th scope="row">${Index + 1}</th>
+                //                <td class="RevenuepageTableData">${Data.orderDate}</td>
+                //                <td class="RevenuepageTableData">${Data.name}</td>
+                //                <td class="RevenuepageTableData">${Data.id}</td>
+                //                <td class="RevenuepageTableData">${Data.shipState}</td>
+                //                <td class="RevenuepageTableData">${Data.price}</td>
+                //                <td class="RevenuepageTableData">${Data.quentity}</td>
+                //                <td class="RevenuepageTableData">${Data.total}</td>
+                //            </tr>
+                //        `
+                //    )
+                //})
             }
         })
     }
@@ -248,80 +248,80 @@ window.onload =function () {
     //#endregion
 
     //#region 排序設定-X軸
-    async function XListOrders(Json, Target) {
+    //async function XListOrders(Json, Target) {
 
-        var something = await Object.entries(Json.reduce(function (result, current) {
-            result[current[Target]] = result[current[Target]] || [];
-            result[current[Target]].push(current);
-            return result;
-        }, {})).map(([key, value]) => ({ name: key, children: value }));
+    //    var something = await Object.entries(Json.reduce(function (result, current) {
+    //        result[current[Target]] = result[current[Target]] || [];
+    //        result[current[Target]].push(current);
+    //        return result;
+    //    }, {})).map(([key, value]) => ({ name: key, children: value }));
 
-        if (ascendingOrder) {
-            something = something.sort((x, y) => x.name.localeCompare(y.name, "zh-Hant"));
-        } else {
-            something = something.sort((x, y) => y.name.localeCompare(x.name, "zh-Hant"));
-        }
-        ascendingOrder = !ascendingOrder;
-        $("#home tbody").empty();
+    //    if (ascendingOrder) {
+    //        something = something.sort((x, y) => x.name.localeCompare(y.name, "zh-Hant"));
+    //    } else {
+    //        something = something.sort((x, y) => y.name.localeCompare(x.name, "zh-Hant"));
+    //    }
+    //    ascendingOrder = !ascendingOrder;
+    //    $("#home tbody").empty();
 
-        var Index = 1;
-        something.forEach(function (element) {
-            element.children.forEach(function (Data) {
-                $("#home tbody").append(
-                    `
-                            <tr>
-                                <th scope="row">${Index++}</th>
-                                <td class="RevenuepageTableData">${Data.orderDate}</td>
-                                <td class="RevenuepageTableData">${Data.name}</td>
-                                <td class="RevenuepageTableData">${Data.id}</td>
-                                <td class="RevenuepageTableData">${Data.shipState}</td>
-                                <td class="RevenuepageTableData">${Data.price}</td>
-                                <td class="RevenuepageTableData">${Data.quentity}</td>
-                                <td class="RevenuepageTableData">${Data.total}</td>
-                            </tr>
-                    `
-                )
-            })
-        })
-    }
+    //    var Index = 1;
+    //    something.forEach(function (element) {
+    //        element.children.forEach(function (Data) {
+    //            $("#home tbody").append(
+    //                `
+    //                        <tr>
+                                
+    //                            <td class="RevenuepageTableData">${Data.orderDate}</td>
+    //                            <td class="RevenuepageTableData">${Data.name}</td>
+    //                            <td class="RevenuepageTableData">${Data.id}</td>
+    //                            <td class="RevenuepageTableData">${Data.shipState}</td>
+    //                            <td class="RevenuepageTableData">${Data.price}</td>
+    //                            <td class="RevenuepageTableData">${Data.quentity}</td>
+    //                            <td class="RevenuepageTableData">${Data.total}</td>
+    //                        </tr>
+    //                `
+    //            )
+    //        })
+    //    })
+    //}
     //#endregion
 
     //#region 排序設定-Y軸
-    async function YListOrders(Json, Target) {
+    //async function YListOrders(Json, Target) {
 
-        var something = await Object.entries(Json.reduce(function (result, current) {
-            result[current[Target]] = result[current[Target]] || [];
-            result[current[Target]].push(current);
-            return result;
-        }, {})).map(([key, value]) => ({ name: key, children: value }));
+    //    var something = await Object.entries(Json.reduce(function (result, current) {
+    //        result[current[Target]] = result[current[Target]] || [];
+    //        result[current[Target]].push(current);
+    //        return result;
+    //    }, {})).map(([key, value]) => ({ name: key, children: value }));
 
-        if (AscendingOrder) {
-            something = something.sort((x, y) => x.name-y.name);
-        } else {
-            something = something.sort((x, y) => y.name-x.name);
-        }
-        AscendingOrder = !AscendingOrder;
-        $("#home tbody").empty();
+    //    if (AscendingOrder) {
+    //        something = something.sort((x, y) => x.name-y.name);
+    //    } else {
+    //        something = something.sort((x, y) => y.name-x.name);
+    //    }
+    //    AscendingOrder = !AscendingOrder;
+    //    $("#home tbody").empty();
 
-        var Index = 1;
-        something.forEach(function (element) {
-            element.children.forEach(function (Data) {
-                $("#home tbody").append(
-                    `
-                            <tr>
-                                <th scope="row">${Index++}</th>
-                                <td class="RevenuepageTableData">${Data.orderDate}</td>
-                                <td class="RevenuepageTableData">${Data.name}</td>
-                                <td class="RevenuepageTableData">${Data.id}</td>
-                                <td class="RevenuepageTableData">${Data.shipState}</td>
-                                <td class="RevenuepageTableData">${Data.price}</td>
-                                <td class="RevenuepageTableData">${Data.quentity}</td>
-                                <td class="RevenuepageTableData">${Data.total}</td>
-                            </tr>
-                    `
-                )
-            })
-        })
-    }
+    //    var Index = 1;
+    //    something.forEach(function (element) {
+    //        element.children.forEach(function (Data) {
+    //            $("#home tbody").append(
+    //                `
+    //                        <tr>
+                                
+    //                            <td class="RevenuepageTableData">${Data.orderDate}</td>
+    //                            <td class="RevenuepageTableData">${Data.name}</td>
+    //                            <td class="RevenuepageTableData">${Data.id}</td>
+    //                            <td class="RevenuepageTableData">${Data.shipState}</td>
+    //                            <td class="RevenuepageTableData">${Data.price}</td>
+    //                            <td class="RevenuepageTableData">${Data.quentity}</td>
+    //                            <td class="RevenuepageTableData">${Data.total}</td>
+    //                        </tr>
+    //                `
+    //            )
+    //        })
+    //    })
+    //}
     //#endregion
 }
